@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module">
+      const handleMessage = (event) => {
+        const { data } = event;
+        console.log({ data });
+
+        const video = document.createElement("video");
+        document.body.append(video);
+
+        const file = data.params[0];
+        const url = URL.createObjectURL(file);
+        video.src = url;
+        video.controls = true;
+
+        console.log({ url });
+
+        // video.src = url;
+        // video.controls = true;
+      };
+
+      window.addEventListener("message", handleMessage);
+    </script>
+  </head>
+</html>
