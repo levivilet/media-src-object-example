@@ -1,15 +1,21 @@
-const response = await fetch("./big_buck_bunny.mp4");
-const blob = await response.blob();
+const start = async () => {
+  const [fileHandle] = await window.showOpenFilePicker();
+  console.log({ fileHandle });
 
-const video = document.createElement("video");
+  const file = await fileHandle.getFile();
 
-const mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
+  console.log({ file });
+  const url = URL.createObjectURL(file);
 
-video.src = blob;
+  console.log({ url });
 
-const m = new MediaSource();
+  const video = document.createElement("video");
+  document.body.append(video);
 
-// const sourceBuffer = m.addSourceBuffer(mimeCodec);
-// sourceBuffer.appendBuffer(data);
+  video.src = url;
+  video.controls = true;
 
-document.body.append(video);
+  globalThis.f = file;
+};
+
+window.addEventListener("click", start, { once: true });
