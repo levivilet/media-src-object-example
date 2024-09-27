@@ -14,8 +14,11 @@
 
         const file = data.params[0];
         const url2 = data.params[1];
+        const url = URL.createObjectURL(file);
         video.src = url2;
         video.controls = true;
+        // video.crossOrigin = true;
+        video.crossOrigin = "anonymous";
 
         // const url = URL.createObjectURL(file);
         // console.log({ url });

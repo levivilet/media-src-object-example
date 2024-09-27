@@ -26,6 +26,10 @@ const start = async () => {
 
   const url2 = URL.createObjectURL(file);
 
+  const fileCopy = new File([file], file.name, { type: file.type });
+
+  console.log({ fileCopy });
+
   // globalThis.f = file;
   await new Promise((r) => {
     iframe.addEventListener("load", r);
@@ -34,7 +38,7 @@ const start = async () => {
     {
       jsonrpc: "2.0",
       method: "setUrl",
-      params: [file, url2],
+      params: [fileCopy, url2],
     },
     "*"
   );
