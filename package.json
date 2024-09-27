@@ -1,14 +1,14 @@
 {
   "name": "media-src-object-example",
-  "version": "1.0.0",
+  "version": "0.0.0-dev",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "http-server static"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "http-server": "^14.1.1"
   }
