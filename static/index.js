@@ -15,12 +15,18 @@ const start = async () => {
   // video.src = url;
   // video.controls = true;
 
+  const iframeResponse = await fetch("./iframe.html");
+  const iframeBlob = await iframeResponse.blob();
+  const iframeSrc = URL.createObjectURL(iframeBlob);
+
   const iframe = document.createElement("iframe");
-  iframe.src = "./iframe.html";
+  iframe.src = iframeSrc;
   iframe.sandbox.add("allow-scripts");
   document.body.append(iframe);
 
-  globalThis.f = file;
+  const url2 = URL.createObjectURL(file);
+
+  // globalThis.f = file;
   await new Promise((r) => {
     iframe.addEventListener("load", r);
   });
@@ -28,7 +34,7 @@ const start = async () => {
     {
       jsonrpc: "2.0",
       method: "setUrl",
-      params: [file],
+      params: [file, url2],
     },
     "*"
   );

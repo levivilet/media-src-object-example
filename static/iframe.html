@@ -13,11 +13,12 @@
         document.body.append(video);
 
         const file = data.params[0];
-        const url = URL.createObjectURL(file);
-        video.src = url;
+        const url2 = data.params[1];
+        video.src = url2;
         video.controls = true;
 
-        console.log({ url });
+        // const url = URL.createObjectURL(file);
+        // console.log({ url });
 
         // video.src = url;
         // video.controls = true;
